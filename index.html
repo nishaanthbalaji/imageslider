@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="slider" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      background-color: rgb(226, 226, 245);
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+    }
+    p {
+      height: 30px;
+      border: 1px solid red;
+      text-align: center;
+      width: 50px;
+      padding-top: 5px;
+      border-radius: 10px;
+    }
+    .image {
+      margin-left: 150px;
+      margin-top: 30px;
+    }
+    .button {
+      margin-top: 20px;
+    }
+    .prev {
+      margin-right: 20px;
+    }
+    .next {
+      margin-left: 20px;
+    }
+    .prev:hover,
+    .next:hover {
+      background-color: lightseagreen;
+      color: blue;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <section>
+      <div class="main">
+        <img
+          style="border: 1px solid lightseagreen"
+          src="./oooone.jpg"
+          alt="one"
+          height="550px"
+          width="80%"
+          class="image"
+        />
+      </div>
+      <div class="button">
+        <div class="prev"><p>Prev</p></div>
+        <div class="next"><p>Next</p></div>
+      </div>
+    </section>
+    <script>
+      let photo = [
+        { id: 1, img: "./oooone.jpg" },
+        {
+          id: 2,
+          img: "./two.jpg",
+        },
+        {
+          id: 3,
+          img: "./three.jpg",
+        },
+        {
+          id: 4,
+          img: "./four.jpg",
+        },
+        {
+          id: 5,
+          img: "./five.jpg",
+        },
+      ];
+      let main = document.querySelector(".main");
+      let image = document.querySelector(".image");
+      let prev = document.querySelector(".prev");
+      let next = document.querySelector(".next");
+
+      function addtion() {
+        let slide = photo[count];
+        image.src = slide.img;
+      }
+
+      let count = 0;
+      next.addEventListener("click", () => {
+        count++;
+        if (count > photo.length - 1) {
+          count = 0;
+        }
+        addtion();
+      });
+
+      prev.addEventListener("click", () => {
+        count--;
+        if (count < 0) {
+          count = photo.length - 1;
+        }
+        addtion();
+      });
+    </script>
+  </body>
+</html>
